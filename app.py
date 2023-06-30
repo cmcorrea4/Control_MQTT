@@ -33,7 +33,8 @@ if st.button('ON'):
     client1= paho.Client("GIT-HUB")                           
     client1.on_publish = on_publish                          
     client1.connect(broker,port)                                 
-    ret= client1.publish("deteccion","ON")                   
+    ret= client1.publish("deteccion","ON") 
+    client1.subscribe("Sensores")
     
 else:
     st.write('')
@@ -42,7 +43,8 @@ if st.button('OFF'):
     client1= paho.Client("GIT-HUB")                           
     client1.on_publish = on_publish                          
     client1.connect(broker,port)                                 
-    ret= client1.publish("deteccion","OFF")                   
+    ret= client1.publish("deteccion","OFF")
+    client1.subscribe("Sensores")
     
 else:
     st.write('')
