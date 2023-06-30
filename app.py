@@ -29,11 +29,20 @@ client1.on_message = on_message
 st.title("MQTT Control")
 
 
-if st.button('Enviar msg'):
+if st.button('ON'):
     client1= paho.Client("GIT-HUB")                           
     client1.on_publish = on_publish                          
     client1.connect(broker,port)                                 
-    ret= client1.publish("deteccion","Taza")                   
+    ret= client1.publish("deteccion","ON")                   
+    
+else:
+    st.write('')
+
+if st.button('OFF'):
+    client1= paho.Client("GIT-HUB")                           
+    client1.on_publish = on_publish                          
+    client1.connect(broker,port)                                 
+    ret= client1.publish("deteccion","OFF")                   
     
 else:
     st.write('')
