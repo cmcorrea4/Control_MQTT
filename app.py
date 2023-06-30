@@ -11,7 +11,7 @@ def on_message(client, userdata, message):
     global message_received
     time.sleep(2)
     message_received=str(message.payload.decode("utf-8"))
-    print(message_received)
+    st.write(message_received)
     if(message_received=="Sonido"):
        sound_file = 'hum_high.mp3'
        display(Audio(sound_file, autoplay=True))
