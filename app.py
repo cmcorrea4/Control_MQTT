@@ -49,8 +49,13 @@ else:
 
 values = st.slider(
     'Selecciona el rango de valores',
-    0.0, 100.0, (25.0, 75.0))
+    0.0, 100.0)
 st.write('Values:', values)
+client1= paho.Client("GIT-HUB")                           
+client1.on_publish = on_publish                          
+client1.connect(broker,port)                                 
+ret= client1.publish("deteccion",values)                   
+
 
 
 
