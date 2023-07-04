@@ -75,7 +75,7 @@ if st.button("Start subscription"):
     thread.start()
     while running:
         if not q.empty():
-            chart.add_rows([q.get()])
+            chart.add_rows([q.get()])    
 
 
 
