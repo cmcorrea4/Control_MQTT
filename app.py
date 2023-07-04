@@ -17,7 +17,7 @@ def on_message(client, userdata, message):
        sound_file = 'hum_high.mp3'
        display(Audio(sound_file, autoplay=True))
         
-client1.on_message = on_message
+
 
 def mqtt_thread():
     client1=paho.Client("GIT-HUB")
@@ -26,7 +26,8 @@ def mqtt_thread():
 
 broker="157.230.214.127"
 port=1883
-
+client1= paho.Client("GIT-HUB")
+client1.on_message = on_message
 
 
 st.title("MQTT Control")
