@@ -2,6 +2,7 @@ import paho.mqtt.client as paho
 import time
 from IPython.display import Audio
 import streamlit as st
+import threading
 
 def on_publish(client,userdata,result):             #create function for callback
     print("el dato ha sido publicado \n")
@@ -15,14 +16,16 @@ def on_message(client, userdata, message):
     if(message_received=="Sonido"):
        sound_file = 'hum_high.mp3'
        display(Audio(sound_file, autoplay=True))
+        
+client1.on_message = on_message
+
+def mqtt_thread():
+    client1=paho.Client("GIT-HUB")
+    client1.subscribe("Sensores")
+    client1.loop_start()
 
 broker="157.230.214.127"
 port=1883
-
-client1=paho.Client("GIT-HUB")
-client1.on_publish = on_publish    
-client1.subscribe("Sensores")
-client1.on_message = on_message
 
 
 
