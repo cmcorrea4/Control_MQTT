@@ -68,13 +68,14 @@ if st.button('Enviar valor analógico'):
 else:
     st.write('')
 
-
+thread = None
+running = True
 if st.button("Start subscription"):
     thread = threading.Thread(target=mqtt_thread)
     thread.start()
-#    while running:
-#        if not q.empty():
-#            chart.add_rows([q.get()])
+    while running:
+        if not q.empty():
+            chart.add_rows([q.get()])
 
 
 
