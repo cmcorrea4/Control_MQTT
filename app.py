@@ -65,11 +65,7 @@ else:
 
 
 
-if st.button("Start subscription"):
-    client1.subscribe("Sensores")
 
-
-client1.loop_start()
 
 
 #while True:                          
