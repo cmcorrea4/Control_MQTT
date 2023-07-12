@@ -66,8 +66,8 @@ else:
 
 
 if st.button("Start subscription"):
-    mqtt_client.subscribe("Sensores")
-    mqtt_client.loop_forever()
+    client1.subscribe("Sensores")
+    client1.loop_forever()
 
 
 #while True:                          
