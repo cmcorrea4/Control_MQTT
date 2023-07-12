@@ -67,7 +67,9 @@ else:
 
 if st.button("Start subscription"):
     client1.subscribe("Sensores")
-    client1.loop_forever()
+
+
+client1.loop_forever()
 
 
 #while True:                          
