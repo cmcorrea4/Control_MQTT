@@ -20,16 +20,11 @@ def on_message(client, userdata, message):
         
 
 
-def mqtt_thread():
-    client1=paho.Client("GIT-HUB")
-    client1.subscribe("Sensores")
-    client1.loop_start()
-
 broker="157.230.214.127"
 port=1883
 client1= paho.Client("GIT-HUB")
 client1.on_message = on_message
-q = queue.Queue()
+
 
 
 st.title("MQTT Control")
@@ -68,18 +63,11 @@ if st.button('Enviar valor analógico'):
 else:
     st.write('')
 
-thread = None
-running = True
+
+
 if st.button("Start subscription"):
-    thread = threading.Thread(target=mqtt_thread)
-    thread.start()
-    while running:
-        if not q.empty():
-            chart.add_rows([q.get()])    
-
-
-
-
+    mqtt_client.subscribe("Sensores")
+    mqtt_client.loop_forever()
 
 
 #while True:                          
